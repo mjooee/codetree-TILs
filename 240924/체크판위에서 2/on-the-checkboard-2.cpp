@@ -28,6 +28,7 @@ int main() {
         int nowColor = arr[0][0];
         for(int j = 1; j < c-2; j++)
         {
+            nowColor = arr[0][0];
             if(arr[i][j] != nowColor && arr[i][j] == arr[r-1][c-1])
             {
                 nowColor = arr[i][j];
