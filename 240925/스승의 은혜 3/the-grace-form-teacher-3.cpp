@@ -20,15 +20,17 @@ int main() {
     for(int i = 0 ; i < n; i++)
     {
         int sum = students[i][0] / 2 + students[i][1];
-        int s = 0;
+        int s = 0, people = 1;
         while(sum < b && s < n)
         {
-            s += 1;
+            s+= 1;
             if (s == i) continue;
             sum += price[s];
+            people += 1;
+ 
         }
 
-        if(s > max) max = s;
+        if(people > max) max = people;
     }
 
     cout << max;
