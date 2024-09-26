@@ -24,13 +24,20 @@ int main() {
     for(int i=0; i < n; i++)
     {
         int sum = students[i][1];
-        int s = 0;
-        while(sum < b)
+        int s = 1;
+        int j = 0;
+        while(sum < b && j < n)
         {
-            s += 1;
-            if(s == i) continue;
-            sum += students[s][0]; 
+            if(j == i) 
+            {
+                j += 1;
+                continue;
+            }
+            sum += students[j][0]; 
+            if(sum < b) s++;
+            j++;
         }
+
         if(s > maxval) maxval = s;
     }
 
