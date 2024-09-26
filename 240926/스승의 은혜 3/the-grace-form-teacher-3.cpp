@@ -34,7 +34,7 @@ int main() {
                 continue;
             }
             sum += students[j][0]; 
-            if(sum < b) s++;
+            if(sum <= b) s++;
             j++;
         }
 
