@@ -9,7 +9,7 @@ int main() {
 
     int arr[101] = {0};
 
-    for(int i = 1; i < n; i++)
+    for(int i = 1; i <= n; i++)
     {
         int x1, x2;
         cin >> x1 >> x2;
