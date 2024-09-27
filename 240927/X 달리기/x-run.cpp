@@ -6,18 +6,18 @@ int main() {
     int x;
     cin >> x;
 
-    int max_speed = 1;
+    int max_speed = 0;
     int total = 0;
+
     while(total < x)
     {
-        total += max_speed;
-        
-        if(total + max_speed <= x)
+        if(total + (max_speed * 2 + 1) <= x)
         {
+            total += max_speed;
             max_speed++;
             total += max_speed;
         }
-            
+        else break;
     }
 
     int time = 0;
@@ -26,12 +26,12 @@ int main() {
 
     int speed = max_speed;
 
-    while(x)
+    while(x && speed)
     {
         if(x - speed >= 0)
         {
             x -= speed;
-            time += 1;
+            time++;
         }
         else speed -= 1;
     }
