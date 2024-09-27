@@ -9,7 +9,7 @@ int main() {
 
     int arr[101] = {0};
 
-    for(int i = 1; i <= n; i++)
+    for(int i = 1; i < 101; i++)
     {
         int x1, x2;
         cin >> x1 >> x2;
@@ -19,7 +19,7 @@ int main() {
         }
     }
 
-    for(int i = 1; i <= n; i++)
+    for(int i = 1; i <= 101; i++)
     {
         if(arr[i] >= n-1)
         {
@@ -27,6 +27,7 @@ int main() {
             break;
         }
     }
+
     cout << ans;
     return 0;
 }
