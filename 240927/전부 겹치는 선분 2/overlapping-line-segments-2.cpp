@@ -7,7 +7,7 @@ int main() {
     cin >> n;
     string ans = "No";
 
-    int arr[101];
+    int arr[101] = {0};
 
     for(int i = 1; i <= n; i++)
     {
