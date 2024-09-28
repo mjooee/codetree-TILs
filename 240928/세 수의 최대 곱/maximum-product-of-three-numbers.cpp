@@ -14,24 +14,24 @@ int main() {
         cin >> arr[i];
     }
 
-    int max = INT_MIN;
+    int maxval = INT_MIN;
 
     sort(arr, arr+n);
 
     if(arr[1] >= 0)
     {
-        max = arr[n-1] * arr[n-2] * arr[n-3];
+        maxval = arr[n-1] * arr[n-2] * arr[n-3];
     }
     else
     {
-        if(arr[n-1] <= 0) max = arr[n-1] * arr[n-2] * arr[n-3];
+        if(arr[n-1] <= 0) maxval = arr[n-1] * arr[n-2] * arr[n-3];
         else
         {
-            max = arr[n-1] * arr[0] * arr[1];
+            maxval = max(arr[n-1] * arr[0] * arr[1], arr[n-1] * arr[n-2] * arr[n-3]);
         }
     }
 
-    cout << max;
+    cout << maxval;
 
     return 0;
 }
