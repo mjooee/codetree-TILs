@@ -1,5 +1,6 @@
 #include <iostream>
 #include <climits>
+#include <algorithm>
 using namespace std;
 
 int main() {
@@ -15,15 +16,18 @@ int main() {
 
     int max = INT_MIN;
 
-    for(int i = 0; i < n-2; i++)
+    sort(arr, arr+n);
+
+    if(arr[1] >= 0)
     {
-        for(int j = i+1; j < n-1; j++)
+        max = arr[n-1] * arr[n-2] * arr[n-3];
+    }
+    else
+    {
+        if(arr[n-1] <= 0) max = arr[n-1] * arr[n-2] * arr[n-3];
+        else
         {
-            for(int k = j+1; k < n; k++)
-            {
-                int val = arr[i] * arr[j] * arr[k];
-                if(val > max) max = val;
-            }
+            max = arr[n-1] * arr[0] * arr[1];
         }
     }
 
