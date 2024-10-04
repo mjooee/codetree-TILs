@@ -38,7 +38,7 @@ int main() {
         }
         else if(input == "top")
         {
-            cout << s.top();
+            cout << s.top()<< endl;
         }
         else{
             int last = pops();
