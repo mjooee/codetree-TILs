@@ -44,12 +44,17 @@ int curve_block(int x, int y) //ㄴ자 블럭
 int straight_block(int x, int y)
 {
     int ver_sum, hor_sum;
-    if(is_safe(x, y+1) && is_safe(x, y+2))
+    if(is_safe(x, y+1) && is_safe(x, y+2) && is_safe(x+1, y) && is_safe(x+2, y))
     {
         hor_sum = arr[x][y] + arr[x][y+1] + arr[x][y+2];
         ver_sum = arr[x][y] + arr[x+1][y] + arr[x+2][y];
     }
-    else
+    else if(is_safe(x, y+1) && is_safe(x, y+2))
+    {
+        hor_sum = arr[x][y] + arr[x][y+1] + arr[x][y+2];
+        ver_sum = 0;
+    }
+    else if(is_safe(x+1, y), is_safe(x+2, y))
     {
         hor_sum = 0;
         ver_sum = arr[x][y] + arr[x+1][y] + arr[x+2][y];
