@@ -79,7 +79,7 @@ int main() {
 
     for(int i = 0; i < n; i++)
     {
-        for(int j = 0; j < n; j++)
+        for(int j = 0; j < m; j++)
         {
             cur_sum = max(cur_sum, curve_block(i, j));
         }
@@ -87,7 +87,7 @@ int main() {
 
     for(int i = 0; i < n; i++)
     {
-        for(int j = 0; j < n; j++)
+        for(int j = 0; j < m; j++)
         {
             str_sum = max(str_sum, straight_block(i, j));
         }
