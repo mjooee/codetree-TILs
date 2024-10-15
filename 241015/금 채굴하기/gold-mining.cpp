@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 
 int arr[20][20];
@@ -14,7 +15,7 @@ void init()
     {
         for(int j = 0; j < n; j++)
         {
-            check[i][j] = 0;
+            check[i][j] = -1;
         }
     }
 }
@@ -35,12 +36,17 @@ int get_gold(int x, int y, int k)
     if(!is_safe(x, y)) return 0;
 
     int golds;
-    if(check[x][y]) golds = 0;
-    else
+    if(check[x][y] == -1)
     {
-        check[x][y] = 1;
+        check[x][y] = k;
         golds = arr[x][y];
     }
+    else if(check[x][y] < k)
+    {
+        check[x][y] = k;
+        golds = 0;
+    }
+    else return 0;
 
     for(int i = 0; i < 4; i++)
     {
@@ -76,11 +82,9 @@ int main() {
                 if(income >= 0 && answer < golds) 
                 {
                     answer = golds;
-
                 }
                 init();
             }
-            
         }
     }
 
