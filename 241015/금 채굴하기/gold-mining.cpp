@@ -2,7 +2,7 @@
 using namespace std;
 
 int arr[20][20];
-int check[20][20] = {0};
+int check[20][20];
 int n, m;
 
 int dx[4] = {0, 0, 1, -1};
@@ -33,17 +33,20 @@ int get_gold(int x, int y, int k)
 {
     if(k < 0) return 0;
     if(!is_safe(x, y)) return 0;
-    if(check[x][y]) return 0;
-    check[x][y] = 1;
 
-    int income = arr[x][y];
-
+    int golds;
+    if(check[x][y]) golds = 0;
+    else
+    {
+        check[x][y] = 1;
+        golds = arr[x][y];
+    }
 
     for(int i = 0; i < 4; i++)
     {
-        income += get_gold(x+dx[i], y+dy[i], k-1);
+        golds += get_gold(x+dx[i], y+dy[i], k-1);
     }
-    return income;
+    return golds;
 }
 
 int main() {
@@ -60,6 +63,8 @@ int main() {
 
     int answer = 0;
 
+    init();
+
     for(int k = 0; k < n*2; k++)
     {
         for(int i = 0; i < n; i++)
@@ -68,7 +73,11 @@ int main() {
             {
                 int golds = get_gold(i, j, k);
                 int income = m * golds - get_cost(k);
-                if(income >= 0 && answer < golds) answer = golds;
+                if(income >= 0 && answer < golds) 
+                {
+                    answer = golds;
+
+                }
                 init();
             }
             
