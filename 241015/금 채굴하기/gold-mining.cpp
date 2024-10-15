@@ -38,6 +38,7 @@ int get_gold(int x, int y, int k)
 
     int income = arr[x][y];
 
+
     for(int i = 0; i < 4; i++)
     {
         income += get_gold(x+dx[i], y+dy[i], k-1);
@@ -68,8 +69,9 @@ int main() {
                 int golds = get_gold(i, j, k);
                 int income = m * golds - get_cost(k);
                 if(income >= 0 && answer < golds) answer = golds;
+                init();
             }
-            init();
+            
         }
     }
 
