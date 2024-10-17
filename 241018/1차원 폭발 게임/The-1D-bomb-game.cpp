@@ -21,6 +21,7 @@ bool is_boom()
     int cnt = 1;
     for(int i = 0; i < n; i++)
     {
+        if(cnt >= m) return true;
         int now_bomb = arr[i];
         if(pre_bomb != now_bomb)
         {
