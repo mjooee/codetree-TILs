@@ -31,14 +31,19 @@ void shift(int r, int c, int power)
 
     int start0 = r + (power-1);
     start0 = start0 > n ? n : start0;
-    int end0 = r - (power-1);
-    end0 = end0 <= 0 ? 0 : end0; 
+    int end0 = r - (power-1)-1;
+    end0 = end0 < 1 ? 1 : end0; 
 
-    for(int x = end0+1; x > 0; x--)
+    for(int x = end0; x > 0; x--)
     {
         arr[start0][c] = arr[x][c];
         start0--;
     }
+    for(int x = end0; x > 0; x--)
+    {
+        arr[x][c] = 0;
+    }
+    
 }
 
 void boom(int r, int c)
