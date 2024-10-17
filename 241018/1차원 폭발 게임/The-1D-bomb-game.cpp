@@ -88,8 +88,7 @@ int main() {
         cin >> arr[i];
     }
 
-    int temp = 3;
-    while(temp--)
+    while(is_boom())
     {
         boom();
     }
