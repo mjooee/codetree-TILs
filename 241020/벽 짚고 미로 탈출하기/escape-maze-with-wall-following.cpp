@@ -10,6 +10,8 @@ int check[MAX_N][MAX_N];
 int dx[4] = {0, 1, 0, -1}; //우하좌상 
 int dy[4] = {1, 0, -1, 0}; 
 
+int pre_right_x = -1;
+int pre_right_y = -1;
 
 //탈출 확인
 bool is_out(int x, int y)
@@ -45,10 +47,15 @@ int move(int x, int y, int dir, int time)
         }
         else
         {
-            // 짚은 벽 중복 체크(불가능 체크)
-            if(check[right_x][right_y]) return -1;
-            else check[right_x][right_y] = 1;
+            if(pre_right_x != right_x || pre_right_y != right_y)
+            {
+                if(check[right_x][right_y]) return -1;
+                else check[right_x][right_y] = 1;
+                pre_right_x = right_x;
+                pre_right_y = right_y;
+            }
         }
+        
     }
 
     return move(next_x, next_y, dir, time+1);
