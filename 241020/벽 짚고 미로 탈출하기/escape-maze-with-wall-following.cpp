@@ -5,7 +5,7 @@ using namespace std;
 
 int n;
 int arr[MAX_N][MAX_N];
-int check[MAX_N][MAX_N] = {0};
+int check[MAX_N][MAX_N];
 
 int dx[4] = {0, 1, 0, -1}; //우하좌상 
 int dy[4] = {1, 0, -1, 0}; 
@@ -17,21 +17,14 @@ bool is_out(int x, int y)
     return x < 0 || x >= n || y < 0 || y >= n;
 }
 
-
-
 int move(int x, int y, int dir, int time)
 {
-    check[x][y] = 1;
-
     // 다음 위치 구하기
     int next_x = x + dx[dir];
     int next_y = y + dy[dir];
 
     // 탈출인지 확인
     if(is_out(next_x, next_y)) return time + 1;
-
-    // 불가능 체크
-    if(time > n) return -1;
 
     // 앞에 벽 있는 지 체크
     if(arr[next_x][next_y])
@@ -49,6 +42,12 @@ int move(int x, int y, int dir, int time)
         {
             //오른쪽으로 회전
             dir = (dir+1) % 4;
+        }
+        else
+        {
+            // 짚은 벽 중복 체크(불가능 체크)
+            if(check[right_x][right_y]) return -1;
+            else check[right_x][right_y] = 1;
         }
     }
 
