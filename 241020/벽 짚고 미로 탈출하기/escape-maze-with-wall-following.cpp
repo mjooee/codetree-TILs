@@ -37,9 +37,8 @@ int move(int x, int y, int dir, int time)
     }
     else
     {
-        // 이미 갔던 곳인지 체크
-        if(check[next_x][next_y])
-            return -1;
+        // 불가능 체크
+        if(time > n) return -1;
         
         //오른쪽 벽 있는 지 확인
         int right_x = next_x + dx[(dir+1) % 4];
