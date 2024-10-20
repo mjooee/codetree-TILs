@@ -17,8 +17,7 @@ bool is_out(int x, int y)
     return x < 0 || x >= n || y < 0 || y >= n;
 }
 
-// 불가능 체크
-if(time > n) return -1;
+
 
 int move(int x, int y, int dir, int time)
 {
@@ -31,6 +30,9 @@ int move(int x, int y, int dir, int time)
     // 탈출인지 확인
     if(is_out(next_x, next_y)) return time + 1;
 
+    // 불가능 체크
+    if(time > n) return -1;
+
     // 앞에 벽 있는 지 체크
     if(arr[next_x][next_y])
     {
@@ -40,8 +42,6 @@ int move(int x, int y, int dir, int time)
     }
     else
     {
-        
-        
         //오른쪽 벽 있는 지 확인
         int right_x = next_x + dx[(dir+1) % 4];
         int right_y = next_y + dy[(dir+1) % 4];
